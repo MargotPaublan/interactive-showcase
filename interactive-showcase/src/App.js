@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {HashRouter,Link,Route,Switch} from "react-router-dom";
 
-function App() {
+
+import ShowcaseView from './components/routes/ShowcaseView.js'
+import ShowcaseEditor from './components/routes/ShowcaseEditor.js'
+
+
+    
+const App = (props)=> {
+ 
   return (
+    <HashRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="menu">
+        <Link to="/"><h2>ShowcaseView</h2></Link>
+        <Link to="/showcase-editor"><h2>ShowcaseEditor</h2></Link>
+      </div>
+      <Switch>
+        <Route exact path="/" component={ShowcaseView}/>
+        <Route exact path="/showcase-editor" component={ShowcaseEditor}/>
+      </Switch>     
     </div>
+    </HashRouter>    
   );
 }
 

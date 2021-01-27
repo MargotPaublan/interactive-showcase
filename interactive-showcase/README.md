@@ -1,4 +1,4 @@
-# VInteractive showcase
+# Interactive showcase
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 It uses Electron to launch in a desktop window intead of a browser window.
@@ -7,13 +7,19 @@ It uses Electron to launch in a desktop window intead of a browser window.
 
 In the project directory, you can run:
 
+
+
 ### `npm install`
 
 Install the app and its dependencies.
 
+
+
 ### `npm run dev`
 
 Runs the app in the development mode in an Electron window.\
+
+
 
 ### `npm start`
 
