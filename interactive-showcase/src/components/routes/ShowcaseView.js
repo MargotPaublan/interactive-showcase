@@ -1,19 +1,21 @@
-import Modal from "react-bootstrap/Modal";
-import Alert from "react-bootstrap/Alert";
-import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Gear } from 'react-bootstrap-icons';
 
+
+
 import React, { useState } from 'react';
 
 import ConnexionModal from '../ConnexionModal.js'
+import Canvas from '../Canvas.js'
 
 
-function ShowcaseView() {
+function ShowcaseView(props) {
   const [displayConnexionForm, setDisplayConnexionForm] = useState(false);
+  const [items, setItems] = useState(props.canvasItems);
   
 
+  
 
   const handleDisplayConnexionChange = (value) => {
     setDisplayConnexionForm(value);
@@ -22,11 +24,14 @@ function ShowcaseView() {
   return (
     <div className="ShowcaseView">
       <Button 
-          variant="light"
+          variant="info"
           onClick={() => setDisplayConnexionForm(true)}>
           <Gear/>
       </Button>
-      <h1>Home - showcase view</h1>
+
+      <h1>Home - Showcase view</h1>
+
+      <Canvas canvasItems={items}/>
 
       <ConnexionModal displayConnexion={displayConnexionForm} onDisplayConnexionChange={handleDisplayConnexionChange}/>
     </div>
