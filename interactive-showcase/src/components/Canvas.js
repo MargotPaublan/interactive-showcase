@@ -1,4 +1,4 @@
-import { Stage, Layer, Rect} from 'react-konva';
+import { Stage, Layer, Rect, Circle} from 'react-konva';
 import React, { useEffect, useState } from 'react';
 
 
@@ -14,16 +14,58 @@ const Canvas = (props) => {
         //props.onItemsChanged(listItems)
     };
 
+    const handleSimpleClick = (evt) => {
+      const canvasElement = evt.target.attrs;
+      props.onItemClicked(canvasElement);
+  };
+
     useEffect(() => {
         setItems(props.canvasItems);
       });
 
+    const itemMapper = () => {
+      canvasItems.map((item) => (
+        <Rect
+          x={item.x}
+          y={item.y}
+          id={item.id}
+          width={item.width}
+          height={item.height}
+          fill={item.fill}
+          cornerRadius={item.cornerRadius}
+          
+          shadowColor={item.shadowColor}
+          shadowBlur={item.shadowBlur}
+          shadowOpacity={item.shadowOpacity}
+
+          stroke={item.stroke}
+          strokeWidth={item.strokeWidth}
+
+          draggable={item.draggable}
+          onDragEnd={handleDragEnd}
+        />
+      ))
+    }
+
   return (
     <div className="ShowcaseEditor">
-        <Stage width={window.innerWidth} height={window.innerHeight}>
-        <Layer>
-        {canvasItems.map((item) => (
-          <Rect
+        <Stage id="canvas" width={1000} height={1000}>
+          <Layer><Rect
+            x={0}
+            y={0}
+            id={0}
+            width={1000}
+            height={500}
+            fill='#ffffff'
+          />
+          
+          
+          </Layer>
+
+          <Layer>
+        {canvasItems.map((item) => {
+        if (item.shape == 'rect') {
+          return (<Rect
             x={item.x}
             y={item.y}
             id={item.id}
@@ -35,16 +77,34 @@ const Canvas = (props) => {
             shadowColor={item.shadowColor}
             shadowBlur={item.shadowBlur}
             shadowOpacity={item.shadowOpacity}
-
+  
             stroke={item.stroke}
             strokeWidth={item.strokeWidth}
-
+  
             draggable={item.draggable}
             onDragEnd={handleDragEnd}
-          />
-        ))}
+            onClick={handleSimpleClick}
+          />)
+        }
+        else {
+          return (<Circle 
+            x={item.x} 
+            y={item.y} 
+            radius={item.radius} 
+            fill={item.fill}
+            stroke={item.stroke}
+            strokeWidth={item.strokeWidth}
+  
+            draggable={item.draggable}
+            onDragEnd={handleDragEnd}
+            onClick={handleSimpleClick}/>)
+        }
+      })}
         </Layer>
+        
       </Stage>
+
+      
     </div>
   );
 }
