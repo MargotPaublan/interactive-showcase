@@ -1,0 +1,19 @@
+#actionsTab {
+    height: 100%;
+    background-color: white;
+    border-left: solid #d9d9d9 1px;
+}
+
+.toggleItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.inlined {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+}

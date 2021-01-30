@@ -3,7 +3,6 @@ import Alert from "react-bootstrap/Alert";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Gear } from 'react-bootstrap-icons';
 
 import {useHistory } from "react-router-dom";
 
@@ -36,7 +35,11 @@ function ConnexionModal(props) {
   }
 
   useEffect(() => {
-    setConnexionDialogShow(props.displayConnexion);
+    const updateConnexionDialogShow = () => {
+      setConnexionDialogShow(props.displayConnexion);
+    }
+    
+    updateConnexionDialogShow();
   });
 
   return (

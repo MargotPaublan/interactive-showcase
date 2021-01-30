@@ -12,7 +12,7 @@ import Canvas from '../Canvas.js'
 
 function ShowcaseView(props) {
   const [displayConnexionForm, setDisplayConnexionForm] = useState(false);
-  const [items, setItems] = useState(props.canvasItems);
+  const [items] = useState(props.canvasItems);
   
 
   

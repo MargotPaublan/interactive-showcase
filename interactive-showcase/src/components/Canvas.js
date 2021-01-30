@@ -1,111 +1,49 @@
-import { Stage, Layer, Rect, Circle} from 'react-konva';
+import { Stage, Layer, Rect} from 'react-konva';
 import React, { useEffect, useState } from 'react';
+
+import CircleShape from './shapes/CircleShape.js'
+import RectShape from './shapes/RectShape.js'
 
 
 const Canvas = (props) => {
     const [canvasItems, setItems] = useState(props.canvasItems);
 
-    const handleDragEnd = (evt) => {
-        let listItems = [...canvasItems];
-        let itemToModify = {...listItems.filter(item => item.id == evt.target.attrs.id)}
-        itemToModify.x = evt.target.attrs.x;
-        listItems[listItems.indexOf(itemToModify)] = itemToModify;
-        setItems(listItems);
-        //props.onItemsChanged(listItems)
-    };
-
-    const handleSimpleClick = (evt) => {
-      const canvasElement = evt.target.attrs;
-      props.onItemClicked(canvasElement);
-  };
-
+    // Re-render the canvas element when the prop canvasItems update
     useEffect(() => {
+      const updateCanvasItems = () => {
         setItems(props.canvasItems);
-      });
+      }
+      
+      updateCanvasItems();
+    });
 
-    const itemMapper = () => {
-      canvasItems.map((item) => (
-        <Rect
-          x={item.x}
-          y={item.y}
-          id={item.id}
-          width={item.width}
-          height={item.height}
-          fill={item.fill}
-          cornerRadius={item.cornerRadius}
-          
-          shadowColor={item.shadowColor}
-          shadowBlur={item.shadowBlur}
-          shadowOpacity={item.shadowOpacity}
-
-          stroke={item.stroke}
-          strokeWidth={item.strokeWidth}
-
-          draggable={item.draggable}
-          onDragEnd={handleDragEnd}
-        />
-      ))
-    }
 
   return (
-    <div className="ShowcaseEditor">
-        <Stage id="canvas" width={1000} height={1000}>
-          <Layer><Rect
-            x={0}
-            y={0}
-            id={0}
-            width={1000}
-            height={500}
-            fill='#ffffff'
-          />
-          
-          
+        <Stage id="canvasEdit" width={1000} height={1000}>
+          {/* Canvas background */}
+          <Layer>
+            <Rect
+              x={0}
+              y={0}
+              id={0}
+              width={1000}
+              height={500}
+              fill='#ffffff'
+            />
           </Layer>
 
+          {/* For each items in the showcase, we map a shape object to represent it on canvas */}
           <Layer>
-        {canvasItems.map((item) => {
-        if (item.shape == 'rect') {
-          return (<Rect
-            x={item.x}
-            y={item.y}
-            id={item.id}
-            width={item.width}
-            height={item.height}
-            fill={item.fill}
-            cornerRadius={item.cornerRadius}
-            
-            shadowColor={item.shadowColor}
-            shadowBlur={item.shadowBlur}
-            shadowOpacity={item.shadowOpacity}
-  
-            stroke={item.stroke}
-            strokeWidth={item.strokeWidth}
-  
-            draggable={item.draggable}
-            onDragEnd={handleDragEnd}
-            onClick={handleSimpleClick}
-          />)
-        }
-        else {
-          return (<Circle 
-            x={item.x} 
-            y={item.y} 
-            radius={item.radius} 
-            fill={item.fill}
-            stroke={item.stroke}
-            strokeWidth={item.strokeWidth}
-  
-            draggable={item.draggable}
-            onDragEnd={handleDragEnd}
-            onClick={handleSimpleClick}/>)
-        }
-      })}
-        </Layer>
-        
+            {canvasItems.map((item, index) => {
+              if (item.shape === 'rect') {
+                return (<RectShape canvasItem={item} key={index}/>);
+              }
+              else {
+                return (<CircleShape canvasItem={item} key={index}/>);     
+              }
+            })}
+          </Layer>
       </Stage>
-
-      
-    </div>
   );
 }
 
