@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import { Circle} from 'react-konva';
 
 
-
+/**
+ * This component represents a circle shape on the canvas
+ */
 const CircleShape = (props) => {
     const [canvasItem] = useState(props.canvasItem);
 

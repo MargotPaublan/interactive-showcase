@@ -9,7 +9,9 @@ import React, { useState } from 'react';
 import ConnexionModal from '../ConnexionModal.js'
 import Canvas from '../Canvas.js'
 
-
+/**
+ * This component represents the view of the showcase by a client
+ */
 function ShowcaseView(props) {
   const [displayConnexionForm, setDisplayConnexionForm] = useState(false);
   const [items] = useState(props.canvasItems);

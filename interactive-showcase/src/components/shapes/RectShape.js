@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import { Rect } from 'react-konva';
 
 
-
+/**
+ * This component represents a rect shape on the canvas
+ */
 const RectShape = (props) => {
     const [canvasItem] = useState(props.canvasItem);
 

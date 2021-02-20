@@ -8,7 +8,10 @@ import {useHistory } from "react-router-dom";
 
 import React, { useEffect, useState } from 'react';
 
-
+/**
+ * This component represents the connexion modal to let a user pass from the client view to a staff member view.
+ * By now, authentification is not set up and always return true. To be changed when when can authentificate a user.
+ */
 function ConnexionModal(props) {
   const [show, setConnexionDialogShow] = useState(props.displayConnexion);
   const [showWarning, setWarningShow] = useState(false);

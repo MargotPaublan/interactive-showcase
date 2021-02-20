@@ -10,6 +10,9 @@ import {Link} from "react-router-dom";
 import '../css/ShowcaseEditor.css';
 
 
+/**
+ * This component represents toolbar in showcase editing
+ */
 const ShowcaseEditorToolbar = (props) => {
 
   // Adds square to its parent list of showcase items. This is reflected on the displaying of the canvas elements, in the canvas component.

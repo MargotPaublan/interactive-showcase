@@ -12,13 +12,15 @@ import ShowcaseEditorActionsTab from '../ShowcaseEditorActionsTab.js'
 
 
 
-
+/**
+ * This component represents the view of the showcase by a staff member who want to redesign the showcase
+ */
 const ShowcaseEditor = (props) => {
   // Canvas items
   const [showcaseItems, setShowcaseItems] = useState(props.canvasItems);
 
   // Available products from the API
-  const [availableProducts, setAvailableProducts] = useState(initItems());
+  const [availableProducts] = useState(initItems());
 
   // Signals to parent that the showcase has changed, to reflect it on the other view (client view)
   const handleShowcaseAddItem = (newItem) => {

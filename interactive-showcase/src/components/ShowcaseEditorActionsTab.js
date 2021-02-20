@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Import Bootstrap components, icons and css
 import { Button, Accordion, Card, Form } from 'react-bootstrap';
@@ -9,7 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //Import own components and css
 import '../css/ShowcaseEditorActionsTab.css';
 
-
+/**
+ * This component represents the "action tab" on the right of the showcase editor
+ */
 const ShowcaseEditorActionsTab = (props) => {
   
 
