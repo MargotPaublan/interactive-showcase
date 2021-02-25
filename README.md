@@ -5,7 +5,7 @@
 
 ### `npm install`
 
-Installe l'application et ses dépendences
+Installe l'application et ses dépendances
 
 
 
